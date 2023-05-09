@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const newRequest = axios.create({
-    baseURL: "https://blooming-basin-02556.herokuapp.com/",
+    baseURL: "https://blooming-basin-02556.herokuapp.com/api/",
     withCredentials: true
 })
 // const newRequest = axios.create({
