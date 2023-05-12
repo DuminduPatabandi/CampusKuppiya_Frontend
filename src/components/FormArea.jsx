@@ -1,8 +1,31 @@
 import styles from '../style'
 import { kuppilogo } from '../assets'
 import { formElements } from '../constants'
+import emailjs, { send } from '@emailjs/browser';
+import { useRef } from 'react';
 
 const FormArea = () => {
+
+
+
+    // Sending mails
+
+    const form = useRef();
+
+    const sendEmail = (e) => {
+      e.preventDefault();
+
+      emailjs.sendForm('service_nky71do', 'template_mqzx1pa', form.current, 'FZKIfp8MpmgZ6mh2T')
+        .then((result) => {
+            console.log(result.text);
+            console.log("message sent")
+        }, (error) => {
+            console.log(error.text);
+        });
+    };
+
+
+
   return (
     <section id='home' className={` ${styles.paddingY} my-0 sm:my-4 `}>
     <div className='flex flex-col  justify-center items-center '>
@@ -18,7 +41,7 @@ const FormArea = () => {
 <div className="flex items-center justify-center p-12">
 
   <div className="mx-auto w-full max-w-[550px]">
-    <form action="https://formbold.com/s/FORM_ID" method="POST">
+    <form ref={form} onSubmit={sendEmail}>
       <div className="mb-5">
       {formElements.map((product) => (
         <div className=''>
@@ -32,6 +55,7 @@ const FormArea = () => {
           name={product.name}
           id={product.id}
           placeholder={product.placeholder}
+          required={true}
           className="w-full outline outline-[#e0e0e0] bg-[#e0e0e0] font-eb py-3 px-6 text-base font-medium text-[#6B7280] outline-offset-0 outline-none focus:outline-[#819be1] focus:shadow-md mb-8 focus:outline-4"/>
           </div>
         ))}

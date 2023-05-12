@@ -15,13 +15,19 @@ const GigCard = ({ item }) => {
       }),
   });
 
+  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+  const createdAtDate = new Date(item.updatedAt);
+  const formattedDate = createdAtDate.toLocaleDateString('en-US', {year: 'numeric', month: 'long', day: 'numeric'});
+  const formattedDateTime = `${formattedDate} `;
+
+<p className='font-medium font-montserrat  text-[.85rem]  text-[#939393] pt-1 pb-6 col-span-2  text-right'>{formattedDateTime}</p>
+
+
   return (
       <div className="gigCard">
               <article key={item.id} className="flex max-w-xl rounded-lg flex-col border drop-shadow-lg p-6  items-start justify-between">
                 <div className="flex items-center gap-x-4 text-xs">
-                  {/* <time dateTime={post.datetime} className="text-gray-500">
-                    {post.date}
-                  </time> */}
+                  <p>{formattedDateTime}</p>
                   <div className="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100">
                     {item.sub_code}
                     </div>

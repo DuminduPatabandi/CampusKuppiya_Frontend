@@ -13,23 +13,23 @@ export default function MyDocuments() {
     queryKey: ["myGigs"],
     queryFn: () =>
       newRequest
-      .get(`/gigs?userId=${currentUser.id}`)
+      .get(`/gigs?userId=${currentUser._id}`)
       .then((res) => {
         return res.data;
       }),
   });
 
   const mutation = useMutation({
-    mutationFn: (id) => {
-      return newRequest.delete(`/gigs/${id}`);
+    mutationFn: (_id) => {
+      return newRequest.delete(`/gigs/${_id}`);
     },
     onSuccess: () => {
       queryClient.invalidateQueries(["myGigs"]);
     },
   });
 
-  const handleDelete = (id) => {
-    mutation.mutate(id);
+  const handleDelete = (_id) => {
+    mutation.mutate(_id);
   };
 
   return (
@@ -43,7 +43,7 @@ export default function MyDocuments() {
         {data.map((gig) => (
         <li key={gig._id} className="flex justify-between gap-x-6 py-5">
           <div className="flex gap-x-4">
-            <img className="h-12 w-12 flex-none rounded-full bg-gray-50" src={gig.img || "/noavatar.jpg"} alt="" />
+            <img className="h-12 w-12 flex-none rounded-full bg-gray-50" src={currentUser.img || "/noavatar.jpg"} alt="" />
             <div className="min-w-0 flex-auto">
               <p className="text-sm font-semibold leading-6 text-gray-900">{gig.title}</p>
               <p className="mt-1 truncate text-xs leading-5 text-gray-500">{gig.sub_title}</p>

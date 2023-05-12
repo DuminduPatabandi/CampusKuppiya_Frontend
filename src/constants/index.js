@@ -4,22 +4,22 @@ export const YearLinks = [
   {
     id: "year1",
     title: "YEAR 1",
-    path: "year1"
+    path: "First Year"
   },
   {
     id: "year2",
     title: "YEAR 2",
-    path: "year2"
+    path: "Second Year"
   },
   {
     id: "year3",
     title: "YEAR 3",
-    path: "year3"
+    path: "Third Year"
   },
   {
     id: "year4",
     title: "YEAR 4",
-    path: "year4"
+    path: "Fourth Year"
   },
 
 ];

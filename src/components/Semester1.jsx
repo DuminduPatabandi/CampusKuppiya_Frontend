@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import { useLoaderData, useNavigate } from 'react-router-dom'
+  import { useLocation } from 'react-router-dom';
+  import { useLoaderData, useNavigate } from 'react-router-dom'
 
 
 
@@ -10,10 +11,26 @@ const Semester1 = (props) => {
   const navigate = useNavigate()
 
 
+  const pathname = window.location.pathname;
+  const pathArray = pathname.split("/");
+  const inputYear = pathArray[2]; 
+
   const handleSubjectClick = (inputValue) => {
     setInput(inputValue);
-    navigate(`/docs?semester=First Semester&search=${inputValue}`);
+    navigate(`/docs?year=${inputYear}&semester=First Semester&search=${inputValue}`);
   };
+
+
+
+  // const handleSubjectClick = (inputValue) => {
+  //   setInput(inputValue);
+  //   navigate(`/docs?semester=First Semester&search=${inputValue}`);
+  // };
+
+
+  const location = useLocation();
+  console.log(location.pathname); // logs the current path
+  // rest of the component code
 
 
   return (

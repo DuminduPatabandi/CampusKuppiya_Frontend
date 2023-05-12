@@ -12,6 +12,14 @@ export default function Example() {
 
   const currentUser = JSON.parse(localStorage.getItem("currentUser"))
 
+    const createdAtDate = new Date(currentUser.createdAt);
+    const formattedDate = createdAtDate.toLocaleDateString('en-US', {year: 'numeric', month: 'long'});
+
+
+    const formattedDateTime = `${formattedDate}`;
+
+
+
 
   return (
     <div className="">
@@ -42,7 +50,7 @@ export default function Example() {
                   <UserIcon className="h-5 w-5 text-[#62646a]" aria-hidden="true" />
                   <p className='font-medium font-montserrat  ml-3 text-[.85rem] text-[#939393] pt-1 '>Member since</p>
                 </div>
-                <p className='font-medium font-montserrat  text-[.85rem]  text-[#939393] pt-1 pb-6 col-span-2  text-right'>DEC 2022</p>
+                <p className='font-medium font-montserrat  text-[.85rem]  text-[#939393] pt-1 pb-6 col-span-2  text-right'>{formattedDate}</p>
               </div>
 
             </div>

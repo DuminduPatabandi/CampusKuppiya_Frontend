@@ -9,9 +9,13 @@ const Semester2 = () => {
   const navigate = useNavigate()
 
 
+  const pathname = window.location.pathname;
+  const pathArray = pathname.split("/");
+  const inputYear = pathArray[2]; 
+
   const handleSubjectClick = (inputValue) => {
     setInput(inputValue);
-    navigate(`/docs?semester=Second Semester&search=${inputValue}`);
+    navigate(`/docs?year=${inputYear}&semester=Second Semester&search=${inputValue}`);
   };
 
 
