@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { Link, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import newRequest from "../../utils/newRequest";
 import upload from "../../utils/upload.js";
 import { kuppilogo } from "../../assets";
@@ -55,7 +55,7 @@ const Register = () => {
             <img
               src={kuppilogo}
               alt="site-logo"
-              className="w-[8rem] h-[8rem] logo object-contain mt-32  sm:mt-10 "
+              className="w-[8rem] h-[8rem] logo object-contain mt-32  sm:mt-26 md:mt-32"
             />
           </div>
 
@@ -118,7 +118,7 @@ const Register = () => {
               placeholder="Password"
             />
           </div>
-          <div className="relative flex items-center mt-4">
+          <div className="relative flex border-2 py-6 rounded-lg items-center mt-4">
             <span className="absolute">
             <UserCircleIcon className="w-6 h-6 mx-3 text-gray-300" aria-hidden="true" />
             </span>
@@ -126,7 +126,7 @@ const Register = () => {
             <input
               type="file"
               name="img"
-              className="block w-full px-10 py-3 text-gray-700"
+              className="block w-full px-10 py-3 text-white"
               onChange={(e) => setFile(e.target.files[0])}
               placeholder="image"
             />
@@ -174,12 +174,12 @@ const Register = () => {
 
             <div className="mt-6 text-center ">
               Already have an account?
-              <Link
+              <NavLink
                 to="/login"
                 className="text-sm px-3 text-blue-500 hover:underline "
               >
                 Login
-              </Link>
+              </NavLink>
               now
             </div>
 

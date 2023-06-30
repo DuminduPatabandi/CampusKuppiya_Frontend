@@ -112,8 +112,8 @@ export default function Example() {
       </Popover>
     ) : (
       <>
-        <NavLink className="link" to="/register">
-          <button className='text-white py-[.4rem] font-semibold rounded-md px-5 bg-[#0a0a23] hover:bg-[#e72a4f] duration-700'>Join Us</button>
+        <NavLink className="link" to="/login">
+          <button className='text-white py-[.4rem] font-semibold rounded-md px-4 text-[.8rem] md:text-[.9rem] bg-[#0a0a23] hover:bg-[#e72a4f] duration-700'>Login or Join</button>
         </NavLink>
       </>
     )}  
