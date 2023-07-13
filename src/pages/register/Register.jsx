@@ -4,7 +4,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import newRequest from "../../utils/newRequest";
 import upload from "../../utils/upload.js";
 import { kuppilogo } from "../../assets";
-import {BuildingLibraryIcon, EnvelopeIcon, LockClosedIcon, UserCircleIcon, UserIcon, } from '@heroicons/react/24/outline'
+import {BuildingLibraryIcon, CloudArrowUpIcon, EnvelopeIcon, LockClosedIcon, UserCircleIcon, UserIcon, } from '@heroicons/react/24/outline'
 import "./Register.css";
 
 
@@ -118,18 +118,23 @@ const Register = () => {
               placeholder="Password"
             />
           </div>
-          <div className="relative flex border-2 py-6 rounded-lg items-center mt-4">
-            <span className="absolute">
-            <UserCircleIcon className="w-6 h-6 mx-3 text-gray-300" aria-hidden="true" />
-            </span>
 
-            <input
-              type="file"
-              name="img"
-              className="block w-full px-10 py-3 text-white"
-              onChange={(e) => setFile(e.target.files[0])}
-              placeholder="image"
-            />
+          <div className="relative flex py-3 items-center mt-4">
+
+                <label for="dropzone-file" class="flex flex-col items-center justify-center w-full h-32 border-2 border-white border-dashed rounded-lg cursor-pointer bg-bg-[#002ead] hover:bg-[#0a0a23] duration-500">
+                    <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                        <CloudArrowUpIcon className="w-8 h-8 mx-3 text-gray-300" aria-hidden="true" />
+                        <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click to upload</span> or drag and drop</p>
+                        <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
+                    </div>
+                    <input 
+                      id="dropzone-file" 
+                      type="file" 
+                      class="hidden"
+                      onChange={(e) => setFile(e.target.files[0])}
+                       />
+                </label>
+
           </div>
 
           <div className="mt-6">
@@ -172,13 +177,13 @@ const Register = () => {
               <span className="mx-2">Sign in with Google</span>
             </a> */}
 
-            <div className="mt-6 text-center ">
+            <div className="mt-6 text-center text-blue-500">
               Already have an account?
               <NavLink
                 to="/login"
-                className="text-sm px-3 text-blue-500 hover:underline "
+                className="text-sm px-3 text-white font-medium hover:underline "
               >
-                Login
+                Log in
               </NavLink>
               now
             </div>

@@ -9,9 +9,11 @@ import {BuildingLibraryIcon, UserIcon, } from '@heroicons/react/24/outline'
 
 const AddNew = () => {
 
+  const [selectedOption, setSelectedOption] = useState('');
   const [state, dispatch] = useReducer(gigReducer, INITIAL_STATE);
 
   const handleChange = (e) => {
+    setSelectedOption(e.target.value);
     dispatch({
       type: "CHANGE_INPUT",
       payload: { name: e.target.name, value: e.target.value },
@@ -107,11 +109,11 @@ const AddNew = () => {
             <span className="absolute">
             <BuildingLibraryIcon className="w-6 h-6 mx-3 text-gray-300" aria-hidden="true" />
             </span>
-            <select onChange={handleChange} name="year" className="block w-full py-3 text-gray-700 bg-white border rounded-lg px-11  focus:border-blue-400  focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40">
-              <option >First Year</option>
-              <option >Second Year</option>
-              <option >Third Year</option>
-              <option >Fourth Year</option>
+            <select onChange={handleChange} value={selectedOption} name="year" className=" block w-full py-3 text-gray-700 bg-white border rounded-lg px-11  focus:border-blue-400  focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40">
+              <option value='First Year'>First Year</option>
+              <option value='Second Year'>Second Year</option>
+              <option value='Third Year'>Third Year</option>
+              <option value='Fourth Year'>Fourth Year</option>
             </select>
 
           </div>
@@ -120,7 +122,7 @@ const AddNew = () => {
             <span className="absolute">
             <BuildingLibraryIcon className="w-6 h-6 mx-3 text-gray-300" aria-hidden="true" />
             </span>
-            <select onChange={handleChange} name="semester" className="block w-full py-3 text-gray-700 bg-white border rounded-lg px-11  focus:border-blue-400  focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40">
+            <select onChange={handleChange} value={selectedOption} name="semester" className="block w-full py-3 text-gray-700 bg-white border rounded-lg px-11  focus:border-blue-400  focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40">
               <option >First Semester</option>
               <option >Second Semester</option>
             </select>

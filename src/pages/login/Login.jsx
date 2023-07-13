@@ -88,13 +88,13 @@ const Login = () => {
                     <span className="mx-2">Sign in with Google</span>
                 </a> */}
 
-                <div className="pt-9 text-center">
+                <div className="pt-9 text-center text-white text-sm">
                     <Link to="/reset">Forgot Password</Link>
                 </div>
 
                 <div className="mt-6 text-center ">
                     <Link to="/register" className="text-sm text-blue-500 hover:underline ">
-                        Don’t have an account yet? Sign up
+                        Don’t have an account yet? <span className="text-white font-semibold">Sign up</span>
                     </Link>
                 </div>
             </div>
