@@ -8,7 +8,7 @@ const SortArea = () => {
                     <div class="w-64 absolute sm:relative bg-[#0a0a23] shadow md:h-full flex-col justify-between hidden sm:flex">
                         <div class="px-8">
                             <div class="h-16 w-full flex items-center">
-                                
+                                  
                             </div>
                             <ul class="mt-12">
 
