@@ -68,8 +68,8 @@ const router = createBrowserRouter(
 
 
       <Route path="profile" element={<Profile />} >
-      <Route path="mydocuments" element={<MyDocuments />} />
-      <Route path="addnew" element={<AddNew />} />
+        <Route path="mydocuments" element={<MyDocuments />} />
+        <Route path="addnew" element={<AddNew />} />
       </Route>
       <Route path="update_profile" element={<UpdateProfile />} />
       <Route path="docs" element={<Docs />} />

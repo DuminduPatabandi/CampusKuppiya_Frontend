@@ -1,3 +1,4 @@
+import { Sort } from "../pages";
 import { Need } from "../components";
 
 
@@ -8,7 +9,9 @@ const Video = () => {
 
     <div className="user">
       {currentUser ? (
-      <div>Video</div>
+      <div>
+        <Sort/>
+      </div>
       ) : (
         <>
         <Need/>

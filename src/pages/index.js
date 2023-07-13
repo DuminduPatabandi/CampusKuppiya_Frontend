@@ -6,6 +6,7 @@ import Video from "./Video";
 import Contact from "./Contact";
 import Login from "./login/Login";
 import Register from "./register/Register";
+import Sort from "./sortPage/Sort";
 import Profile from "./Profile";
 import Docs from "./Docs";
 import UpdateProfile from "./UpdateProfile";
@@ -17,6 +18,7 @@ export {
     About,
     Kuppiya,
     Video,
+    Sort,
     Contact,
     Login,
     Register,

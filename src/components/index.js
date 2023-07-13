@@ -22,6 +22,7 @@ import Document from "./document/Document"
 import GigCard from "./gigCard/GigCard"
 import MyDocuments from "./dashboard/MyDoduments"
 import AddNew from "./dashboard/AddNew"
+import SortArea from "./sortCard/SortArea"
 
 
 
@@ -31,6 +32,7 @@ export {
     Need,
     Document,
     MyDocuments,
+    SortArea,
     AddNew,
     GigCard,
     Navbar,
