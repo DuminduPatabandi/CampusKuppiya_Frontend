@@ -69,7 +69,7 @@ const AddNew = () => {
               placeholder="Sub Title"
             />
           </div>
-          <div class="relative flex items-center mt-4">
+          {/* <div class="relative flex items-center mt-4">
             <span className="absolute">
             <UserIcon className="w-6 h-6 mx-3 text-gray-300" aria-hidden="true" />
             </span>
@@ -81,7 +81,29 @@ const AddNew = () => {
               onChange={handleChange}
               placeholder="Subject"
             />
+          </div> */}
+
+          <div class="relative flex items-center mt-4">
+            <span className="absolute">
+            <UserIcon className="w-6 h-6 mx-3 text-gray-300" aria-hidden="true" />
+            </span>
+            <select onChange={handleChange} value={selectedOption} name="subject" className=" block w-full py-3 text-gray-400 bg-white border rounded-lg px-11  focus:border-blue-400  focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40 custom-select">
+              <option value=''>Subject</option>
+              <option value='Computer Science'>Computer Science</option>
+              <option value='Computer Studies'>Computer Studies</option>
+              <option value='Statistics'>Statistics</option>
+              <option value='Pure Maths'>Pure Maths</option>
+              <option value='Applied Maths'>Applied Maths</option>
+              <option value='Physics'>Physics</option>
+              <option value='Chemistry'>Chemistry</option>
+              <option value='Relaxing Music'>Study Music</option>
+              <option value='More'>More</option>
+
+
+            </select>
+
           </div>
+
           <div class="relative flex items-center mt-4">
             <span className="absolute">
             <UserIcon className="w-6 h-6 mx-3 text-gray-300" aria-hidden="true" />
@@ -97,6 +119,7 @@ const AddNew = () => {
           </div>
           <div class="relative flex items-center mt-4">
 
+
             <textarea 
               rows="4"
               name="desc"
@@ -109,7 +132,7 @@ const AddNew = () => {
             <span className="absolute">
             <BuildingLibraryIcon className="w-6 h-6 mx-3 text-gray-300" aria-hidden="true" />
             </span>
-            <select onChange={handleChange} value={selectedOption} name="year" className=" block w-full py-3 text-gray-700 bg-white border rounded-lg px-11  focus:border-blue-400  focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40">
+            <select onChange={handleChange} value={selectedOption} name="year" className=" block w-full py-3 text-gray-400 bg-white border rounded-lg px-11  focus:border-blue-400  focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40 custom-select">
               <option value='First Year'>First Year</option>
               <option value='Second Year'>Second Year</option>
               <option value='Third Year'>Third Year</option>
@@ -122,7 +145,7 @@ const AddNew = () => {
             <span className="absolute">
             <BuildingLibraryIcon className="w-6 h-6 mx-3 text-gray-300" aria-hidden="true" />
             </span>
-            <select onChange={handleChange} value={selectedOption} name="semester" className="block w-full py-3 text-gray-700 bg-white border rounded-lg px-11  focus:border-blue-400  focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40">
+            <select onChange={handleChange} value={selectedOption} name="semester" className="block w-full py-3 text-gray-400 bg-white border rounded-lg px-11  focus:border-blue-400  focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40 custom-select">
               <option >First Semester</option>
               <option >Second Semester</option>
             </select>

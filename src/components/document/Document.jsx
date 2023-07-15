@@ -51,14 +51,14 @@ export default function Example() {
               <ul className='list-none flex  items-center'>
                   <span
                     key="newest"
-                    className = {`font-montserrat rounded-full border-[#002ead] border-2 text-[#838383] hover:text-white hover:bg-[#002ead] py-2 px-5 font-bold duration-700 cursor-pointer  md:my-1 text-[.85rem] mx-2 `}
+                    className = {`font-montserrat rounded-full border-[#002ead] border-2 text-[#0a0a23] hover:text-white hover:bg-[#002ead] py-2 px-5 font-bold duration-700 cursor-pointer  md:my-1 text-[.85rem] mx-2 `}
                     onClick={() => reSort("createdAt")}
                     >
                       Newest
                   </span>
                   <span
                     key="populest"
-                    className = {`font-montserrat rounded-full border-[#002ead] border-2 text-[#838383] hover:text-white hover:bg-[#002ead] py-2 px-5 font-bold duration-700 cursor-pointer  md:my-1 text-[.85rem] mx-2 `}
+                    className = {`font-montserrat rounded-full border-[#002ead] border-2 text-[#0a0a23] hover:text-white hover:bg-[#002ead] py-2 px-5 font-bold duration-700 cursor-pointer  md:my-1 text-[.85rem] mx-2 `}
                     onClick={() => reSort("sales")}
                     >
                       Popular

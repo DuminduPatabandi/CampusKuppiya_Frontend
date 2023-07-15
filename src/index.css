@@ -190,3 +190,16 @@ nav ul li a.active {
 .logo:hover ~ .cursor2 {
   opacity: 0;
 } */
+
+.btn:active {
+  background-color: #002ead;
+}
+
+.custom-select {
+  /* Hide the default arrow */
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+}
+

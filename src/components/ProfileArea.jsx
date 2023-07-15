@@ -28,9 +28,9 @@ export default function Example() {
 
           <div className=" pt-4  sm:flex sm:gap-x-20  ">
             <div className="infotab  bg-white sm:w-[38rem] lg:w-[25rem] sm:px-4 border border-[#dfdfe1] ">
-                <div className="edit text-center grid place-content-end">
-                  <PencilSquareIcon className="h-6 w-6 mt-4 mr-4 sm:mr-1 text-slate-200 hover:text-[#002ead] duration-700" aria-hidden="true" />
-                </div>
+              <div className="edit text-center grid place-content-end">
+                <PencilSquareIcon className="h-6 w-6 mt-4 mr-4 sm:mr-1 text-slate-200 hover:text-[#002ead] duration-700" aria-hidden="true" />
+              </div>
               <div className="grid place-items-center">
                 <img className="object-cover w-36 h-36  rounded-full" src={currentUser.img || "noavatar.jpg"} alt="Profile picture"/>
                 <h1 className='text-center font-montserrat  text-[1.25rem] pt-6 font-semibold'>{currentUser?.username}</h1>

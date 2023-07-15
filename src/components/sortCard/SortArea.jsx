@@ -1,16 +1,26 @@
 import { Document } from "../../components"
 import './sort.css'
 
-import { useState } from 'react'
-import { useLocation } from 'react-router-dom';
-import { useLoaderData, useNavigate } from 'react-router-dom'
+import { useState, useEffect } from 'react'
+import { Router, useLocation, useNavigate } from 'react-router-dom';
 
 const SortArea = () => {
 
+    const [input, setInput] = useState("")
+    const navigate = useNavigate()
+
     const handleSubjectClick = (inputValue) => {
         setInput(inputValue);
-        navigate(`/docs?year=${inputValue}&semester=First Semester&search=${inputValue}`);
+        navigate(`/videos?semester=First Semester&search=${inputValue}`);
     };
+
+
+
+
+    // The mobile Version
+
+    // End.
+
 
     return (
 
@@ -26,43 +36,43 @@ const SortArea = () => {
                             <ul class="mt-12">
 
                                 <li class=" w-full justify-between text-white cursor-pointer items-center mb-7">
-                                    <div class=" font-montserrat font-bold text-[1rem] ml-2 mb-5">YEAR</div>   
+                                    <div class=" font-montserrat font-bold text-[1.1rem] ml-2 mb-5">YEAR</div>   
                                     <>
                                         <ul class="mt-1">
-                                            <li class="flex w-full text-white cursor-pointer items-center mb-4">
+                                            <li class="flex w-full text-white cursor-pointer items-center mb-4 ">
                                                 <input 
                                                     onClick={() => handleSubjectClick(input)} 
                                                     type="checkbox" 
-                                                    className="ml-2" 
+                                                    className="ml-2 " 
                                                 />
-                                                <p class=" font-montserrat font-semibold text-[0.7rem] ml-3">FIRST YEAR</p>
+                                                <p class=" font-montserrat font-semibold text-[0.75rem] ml-3 hover:translate-x-2 transition-transform duration-300 transform  ">FIRST YEAR</p>
                                             </li>
                                             <li class="flex w-full text-white cursor-pointer items-center mb-4">
                                                 <input 
                                                     type="checkbox" 
                                                     className="ml-2" 
                                                 />
-                                                <p class="font-montserrat font-semibold text-[0.7rem] ml-3">SECOND YEAR</p>
+                                                <p class="font-montserrat font-semibold text-[0.75rem] ml-3 hover:translate-x-2 transition-transform duration-300 transform">SECOND YEAR</p>
                                             </li>
                                             <li class="flex w-full text-white cursor-pointer items-center mb-4">
                                                 <input 
                                                     type="checkbox" 
                                                     className="ml-2" 
                                                 />
-                                                <p class=" font-montserrat font-semibold text-[0.7rem] ml-3">THIRD YEAR</p>
+                                                <p class=" font-montserrat font-semibold text-[0.75rem] ml-3 hover:translate-x-2 transition-transform duration-300 transform">THIRD YEAR</p>
                                             </li>
                                             <li class="flex w-full text-white cursor-pointer items-center mb-4">
                                                 <input 
                                                     type="checkbox" 
                                                     className="ml-2" 
                                                 />
-                                                <p class=" font-montserrat font-semibold text-[0.7rem] ml-3">FOURTH YEAR</p>
+                                                <p class=" font-montserrat font-semibold text-[0.75rem] ml-3 hover:translate-x-2 transition-transform duration-300 transform">FOURTH YEAR</p>
                                             </li>
                                         </ul>
                                     </>
                                 </li>                              
                                 <li class=" w-full justify-between text-white cursor-pointer items-center mb-7">
-                                    <div class=" font-montserrat font-bold text-[1rem] ml-2 mb-5">SEMESTER</div>   
+                                    <div class=" font-montserrat font-bold text-[1.1rem] ml-2 mb-5">SEMESTER</div>   
                                     <>
                                         <ul class="mt-1">
                                             <li class="flex w-full text-white cursor-pointer items-center mb-4">
@@ -70,85 +80,90 @@ const SortArea = () => {
                                                     type="checkbox" 
                                                     className="ml-2" 
                                                 />
-                                                <p class=" font-montserrat font-semibold text-[0.7rem] ml-3">FIRST SEMESTER</p>
+                                                <p class=" font-montserrat font-semibold text-[0.75rem] ml-3 hover:translate-x-2 transition-transform duration-300 transform">FIRST SEMESTER</p>
                                             </li>
                                             <li class="flex w-full text-white cursor-pointer items-center mb-4">
                                                 <input 
                                                     type="checkbox" 
                                                     className="ml-2" 
                                                 />
-                                                <p class="font-montserrat font-semibold text-[0.7rem] ml-3">SECOND SEMESTER</p>
+                                                <p class="font-montserrat font-semibold text-[0.75rem] ml-3 hover:translate-x-2 transition-transform duration-300 transform">SECOND SEMESTER</p>
                                             </li>
 
                                         </ul>
                                     </>
                                 </li>                              
                                 <li class=" w-full justify-between text-white cursor-pointer items-center mb-7">
-                                    <div class=" font-montserrat font-bold text-[1rem] ml-2 mb-5">SUBJECT</div>   
+                                    <div class=" font-montserrat font-bold text-[1.1rem] ml-2 mb-5">SUBJECT</div>   
                                     <>
                                         <ul class="mt-1">
                                             <li class="flex w-full text-white cursor-pointer items-center mb-4">
                                                 <input 
                                                     type="checkbox" 
-                                                    className="ml-2" 
+                                                    className="ml-2"
+                                                    onChange={() => handleSubjectClick("Computer Science")} 
                                                 />
-                                                <p class=" font-montserrat font-semibold text-[0.7rem] ml-3">COMPUTER SCIENCE</p>
+                                                <p class=" font-montserrat font-semibold text-[0.75rem] ml-3 hover:translate-x-2 transition-transform duration-300 transform">COMPUTER SCIENCE</p>
+                                            </li>
+                                            <li class="flex w-full text-white cursor-pointer items-center mb-4">
+                                                <input 
+                                                    type="checkbox" 
+                                                    className="ml-2"
+                                                    onChange={() => handleSubjectClick("Computer Studies")} 
+                                                />
+                                                <p class="font-montserrat font-semibold text-[0.75rem] ml-3 hover:translate-x-2 transition-transform duration-300 transform">COMPUTER STUDIES</p>
+                                            </li>
+                                            <li class="flex w-full text-white cursor-pointer items-center mb-4">
+                                                <input 
+                                                    type="checkbox" 
+                                                    className="ml-2" 
+                                                    onChange={() => handleSubjectClick("Statistics")}  
+                                                />
+                                                <p class=" font-montserrat font-semibold text-[0.75rem] ml-3 hover:translate-x-2 transition-transform duration-300 transform">STATISTICS</p>
+                                            </li>
+                                            <li class="flex w-full text-white cursor-pointer items-center mb-4">
+                                                <input 
+                                                    type="checkbox" 
+                                                    className="ml-2"
+                                                    onChange={() => handleSubjectClick("Pure Maths")}  
+                                                />
+                                                <p class="font-montserrat font-semibold text-[0.75rem] ml-3 hover:translate-x-2 transition-transform duration-300 transform">PURE MATHS</p>
                                             </li>
                                             <li class="flex w-full text-white cursor-pointer items-center mb-4">
                                                 <input 
                                                     type="checkbox" 
                                                     className="ml-2" 
                                                 />
-                                                <p class="font-montserrat font-semibold text-[0.7rem] ml-3">COMPUTER STUDIES</p>
+                                                <p class=" font-montserrat font-semibold text-[0.75rem] ml-3 hover:translate-x-2 transition-transform duration-300 transform">APPLIED MATHS</p>
                                             </li>
                                             <li class="flex w-full text-white cursor-pointer items-center mb-4">
                                                 <input 
                                                     type="checkbox" 
                                                     className="ml-2" 
                                                 />
-                                                <p class=" font-montserrat font-semibold text-[0.7rem] ml-3">STATISTICS</p>
+                                                <p class="font-montserrat font-semibold text-[0.75rem] ml-3 hover:translate-x-2 transition-transform duration-300 transform">PHYSICS</p>
+                                            </li>
+                                            <li class="flex w-full text-white cursor-pointer items-center mb-4">
+                                                <input 
+                                                    type="checkbox" 
+                                                    className="ml-2"
+                                                    onClick={() => handleSubjectClick("Physics")}  
+                                                />
+                                                <p class=" font-montserrat font-semibold text-[0.75rem] ml-3 hover:translate-x-2 transition-transform duration-300 transform">CHEMISTRY</p>
                                             </li>
                                             <li class="flex w-full text-white cursor-pointer items-center mb-4">
                                                 <input 
                                                     type="checkbox" 
                                                     className="ml-2" 
                                                 />
-                                                <p class="font-montserrat font-semibold text-[0.7rem] ml-3">PURE MATHEMATICS</p>
+                                                <p class="font-montserrat font-semibold text-[0.75rem] ml-3 hover:translate-x-2 transition-transform duration-300 transform">STUDY MUSIC</p>
                                             </li>
                                             <li class="flex w-full text-white cursor-pointer items-center mb-4">
                                                 <input 
                                                     type="checkbox" 
                                                     className="ml-2" 
                                                 />
-                                                <p class=" font-montserrat font-semibold text-[0.7rem] ml-3">APPLIED MATHEMATICS</p>
-                                            </li>
-                                            <li class="flex w-full text-white cursor-pointer items-center mb-4">
-                                                <input 
-                                                    type="checkbox" 
-                                                    className="ml-2" 
-                                                />
-                                                <p class="font-montserrat font-semibold text-[0.7rem] ml-3">PHYSICS</p>
-                                            </li>
-                                            <li class="flex w-full text-white cursor-pointer items-center mb-4">
-                                                <input 
-                                                    type="checkbox" 
-                                                    className="ml-2" 
-                                                />
-                                                <p class=" font-montserrat font-semibold text-[0.7rem] ml-3">CHEMISTRY</p>
-                                            </li>
-                                            <li class="flex w-full text-white cursor-pointer items-center mb-4">
-                                                <input 
-                                                    type="checkbox" 
-                                                    className="ml-2" 
-                                                />
-                                                <p class="font-montserrat font-semibold text-[0.7rem] ml-3">STUDY MUSIC</p>
-                                            </li>
-                                            <li class="flex w-full text-white cursor-pointer items-center mb-4">
-                                                <input 
-                                                    type="checkbox" 
-                                                    className="ml-2" 
-                                                />
-                                                <p class="font-montserrat font-semibold text-[0.7rem] ml-3">OTHERS</p>
+                                                <p class="font-montserrat font-semibold text-[0.75rem] ml-3 hover:translate-x-2 transition-transform duration-300 transform">OTHERS</p>
                                             </li>
 
                                         </ul>
@@ -161,7 +176,7 @@ const SortArea = () => {
                     </div>
 
                     <div class="w-64 z-40 absolute bg-[#0a0a23] shadow md:h-full flex-col justify-between sm:hidden transition duration-150 ease-in-out" id="mobile-nav">
-                        <button aria-label="toggle sidebar" id="openSideBar" class="h-10 w-10 bg-[#0a0a23] absolute right-0 mt-16 -mr-10 flex items-center shadow rounded-tr rounded-br justify-center cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 rounded focus:ring-gray-800" onclick="sidebarHandler(true)">
+                        <button aria-label="toggle sidebar" id="openSideBar" class="h-10 w-10 bg-[#0a0a23] absolute right-0 mt-16 -mr-10 flex items-center shadow rounded-tr rounded-br justify-center cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 rounded focus:ring-gray-800">
                             <svg  xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-adjustments" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#FFFFFF" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" />
                                 <circle cx="6" cy="10" r="2" />
@@ -175,7 +190,7 @@ const SortArea = () => {
                                 <line x1="18" y1="9" x2="18" y2="20" />
                             </svg>
                         </button>
-                        <button aria-label="Close sidebar" id="closeSideBar" class="hidden h-10 w-10 bg-[#0a0a23] absolute right-0 mt-16 -mr-10  items-center shadow rounded-tr rounded-br justify-center cursor-pointer text-white" onclick="sidebarHandler(false)">
+                        <button aria-label="Close sidebar" id="closeSideBar" class="hidden h-10 w-10 bg-[#0a0a23] absolute right-0 mt-16 -mr-10  items-center shadow rounded-tr rounded-br justify-center cursor-pointer text-white" >
                             <svg  xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" />
                                 <line x1="18" y1="6" x2="6" y2="18" />
@@ -285,24 +300,9 @@ const SortArea = () => {
                         </div>
                     </div>
                 </div>
-                {/* <script>
-                    var sideBar = document.getElementById("mobile-nav");
-                    var openSidebar = document.getElementById("openSideBar");
-                    var closeSidebar = document.getElementById("closeSideBar");
-                    sideBar.style.transform = "translateX(-260px)";
+                
 
-                    function sidebarHandler(flag) {
-                        if (flag) {
-                            sideBar.style.transform = "translateX(0px)";
-                            openSidebar.classList.add("hidden");
-                            closeSidebar.classList.remove("hidden");
-                        } else {
-                            sideBar.style.transform = "translateX(-260px)";
-                            closeSidebar.classList.add("hidden");
-                            openSidebar.classList.remove("hidden");
-                        }
-                    }
-                </script> */}
+                
                 
             </dh-component>
         </div>
