@@ -87,7 +87,7 @@ const AddNew = () => {
             <span className="absolute">
             <UserIcon className="w-6 h-6 mx-3 text-gray-300" aria-hidden="true" />
             </span>
-            <select onChange={handleChange} value={selectedOption} name="subject" className=" block w-full py-3 text-gray-400 bg-white border rounded-lg px-11  focus:border-blue-400  focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40 custom-select">
+            <select onChange={handleChange} value={selectedOption} name="subject" className=" block w-full py-3 text-gray-400 bg-white border rounded-lg px-11  focus:border-blue-400  focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40 appearance-none">
               <option value=''>Subject</option>
               <option value='Computer Science'>Computer Science</option>
               <option value='Computer Studies'>Computer Studies</option>
@@ -132,7 +132,7 @@ const AddNew = () => {
             <span className="absolute">
             <BuildingLibraryIcon className="w-6 h-6 mx-3 text-gray-300" aria-hidden="true" />
             </span>
-            <select onChange={handleChange} value={selectedOption} name="year" className=" block w-full py-3 text-gray-400 bg-white border rounded-lg px-11  focus:border-blue-400  focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40 custom-select">
+            <select onChange={handleChange} value={selectedOption} name="year" className=" block w-full py-3 text-gray-400 bg-white border rounded-lg px-11  focus:border-blue-400  focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40 appearance-none">
               <option value='First Year'>First Year</option>
               <option value='Second Year'>Second Year</option>
               <option value='Third Year'>Third Year</option>
@@ -145,7 +145,7 @@ const AddNew = () => {
             <span className="absolute">
             <BuildingLibraryIcon className="w-6 h-6 mx-3 text-gray-300" aria-hidden="true" />
             </span>
-            <select onChange={handleChange} value={selectedOption} name="semester" className="block w-full py-3 text-gray-400 bg-white border rounded-lg px-11  focus:border-blue-400  focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40 custom-select">
+            <select onChange={handleChange} value={selectedOption} name="semester" className="block w-full py-3 text-gray-400 bg-white border rounded-lg px-11  focus:border-blue-400  focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40 appearance-none">
               <option >First Semester</option>
               <option >Second Semester</option>
             </select>
