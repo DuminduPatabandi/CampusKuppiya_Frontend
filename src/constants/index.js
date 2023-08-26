@@ -4,25 +4,41 @@ export const YearLinks = [
   {
     id: "year1",
     title: "YEAR 1",
-    path: "First Year"
+    path: "First Year",
+    yearName: "FIRST YEAR"
   },
   {
     id: "year2",
     title: "YEAR 2",
-    path: "Second Year"
+    path: "Second Year",
+    yearName: "SECOND YEAR"
   },
   {
     id: "year3",
     title: "YEAR 3",
-    path: "Third Year"
+    path: "Third Year",
+    yearName: "THIRD YEAR"
   },
   {
     id: "year4",
     title: "YEAR 4",
-    path: "Fourth Year"
+    path: "Fourth Year",
+    yearName: "FOURTH YEAR"
   },
 
 ];
+export const Semesters = [
+  {
+    id: "y1s1",
+    title: "FIRST SEMESTER",
+    path: "sem1"
+  },
+  {
+    id: "y1s2",
+    title: "SECOND SEMESTER",
+    path: "sem2"
+  },
+] 
 export const Y1Semesters = [
   {
     id: "y1s1",
@@ -439,6 +455,60 @@ export const subjects = [
     "input":"More +"
 }
 ]
+
+export const sortSubjects = [
+  
+  {
+    "id":31114,
+    "input":"Computer Science",
+    "title":"COMPUTER SCIENCE"
+    
+  },
+  {
+      "id":31174,
+      "input":"Computer Studies",
+      "title":"COMPUTER STUDIES"   
+  },
+{
+    "id":31134,
+    "input":"Applied Maths",
+    "title":"APPLIED MATHS"
+    
+},
+{
+    "id":31124,
+    "input":"Pure Maths",
+    "title":"PURE MATHS"
+    
+},
+{
+    "id":31144,
+    "input":"Physics",
+    "title":"PHYSICS"
+},
+{
+    "id":31154,
+    "input":"Chemistry",
+    "title":"CHEMISTRY"
+},
+{
+    "id":31164,
+    "input":"Statistics",
+    "title":"STATISTICS"
+},
+{
+    "id":31184,
+    "input":"Relaxing Music",
+    "title":"RELAXING MUSIC"
+    
+},
+{
+    "id":31194,
+    "input":"More +",
+    "title":"OTHER"
+}
+]
+
 
 export const footerLinks = [
 

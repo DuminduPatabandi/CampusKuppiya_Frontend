@@ -1,5 +1,7 @@
 import { Document } from "../../components"
 import './sort.css'
+import { kuppilogo } from '../../assets'
+import { sortSubjects, YearLinks, Semesters } from "../../constants"
 
 import { useState, useEffect } from 'react'
 import { Router, useLocation, useNavigate } from 'react-router-dom';
@@ -7,29 +9,21 @@ import { Router, useLocation, useNavigate } from 'react-router-dom';
 const SortArea = () => {
 
     const [input, setInput] = useState("")
+    const [subjectClick, setSubjectClick] = useState('')
     const navigate = useNavigate()
 
 
-    const handleSubjectClick = (inputValue) => {
 
-        var checkboxes = document.querySelectorAll("input[type=checkbox]");
-        checkboxes.forEach(function(checkbox) {
-            if (checkbox.checked) {
-                setInput(inputValue);
-                navigate(`/videos?semester=First Semester&search=${inputValue}`);
-            } else {
-                console.log("Checkbox is unchecked!");
+    const handleCheckboxChange = (event) => {
+        setIsChecked(event.target.checked);
 
+        useEffect(() => {
+            if (isChecked) {
+            navigate(`/videos?semester=First Semester&search=${subjectClick}`);
             }
-        })
+    
+        }, [isChecked])
     };
-
-
-
-
-    // The mobile Version
-
-    // End.
 
 
     return (
@@ -48,36 +42,17 @@ const SortArea = () => {
                                 <li class=" w-full justify-between text-white cursor-pointer items-center mb-7">
                                     <div class=" font-montserrat font-bold text-[1.1rem] ml-2 mb-5">YEAR</div>   
                                     <>
-                                        <ul class="mt-1">
-                                            <li class="flex w-full text-white cursor-pointer items-center mb-4 ">
-                                                <input 
-                                                    onChange={() => handleSubjectClick(input)} 
-                                                    type="checkbox" 
-                                                    className="ml-2 accent-[#e72a4f] scale-125" 
-                                                />
-                                                <p class=" font-montserrat font-semibold text-[0.75rem] ml-3 hover:translate-x-2 transition-transform duration-300 transform  ">FIRST YEAR</p>
-                                            </li>
+                                    <ul class="mt-1">
+                                            {YearLinks.map((year) => (
+
                                             <li class="flex w-full text-white cursor-pointer items-center mb-4">
                                                 <input 
                                                     type="checkbox" 
                                                     className="ml-2 accent-[#e72a4f] scale-125" 
                                                 />
-                                                <p class="font-montserrat font-semibold text-[0.75rem] ml-3 hover:translate-x-2 transition-transform duration-300 transform">SECOND YEAR</p>
+                                                <p class=" font-montserrat font-semibold text-[0.75rem] ml-3">{year.yearName}</p>
                                             </li>
-                                            <li class="flex w-full text-white cursor-pointer items-center mb-4">
-                                                <input 
-                                                    type="checkbox" 
-                                                    className="ml-2 accent-[#e72a4f] scale-125" 
-                                                />
-                                                <p class=" font-montserrat font-semibold text-[0.75rem] ml-3 hover:translate-x-2 transition-transform duration-300 transform">THIRD YEAR</p>
-                                            </li>
-                                            <li class="flex w-full text-white cursor-pointer items-center mb-4">
-                                                <input 
-                                                    type="checkbox" 
-                                                    className="ml-2 accent-[#e72a4f] scale-125" 
-                                                />
-                                                <p class=" font-montserrat font-semibold text-[0.75rem] ml-3 hover:translate-x-2 transition-transform duration-300 transform">FOURTH YEAR</p>
-                                            </li>
+                                            ))}
                                         </ul>
                                     </>
                                 </li>                              
@@ -85,21 +60,16 @@ const SortArea = () => {
                                     <div class=" font-montserrat font-bold text-[1.1rem] ml-2 mb-5">SEMESTER</div>   
                                     <>
                                         <ul class="mt-1">
-                                            <li class="flex w-full text-white cursor-pointer items-center mb-4">
-                                                <input 
-                                                    type="checkbox" 
-                                                    className="ml-2 accent-[#e72a4f] scale-125" 
-                                                />
-                                                <p class=" font-montserrat font-semibold text-[0.75rem] ml-3 hover:translate-x-2 transition-transform duration-300 transform">FIRST SEMESTER</p>
-                                            </li>
-                                            <li class="flex w-full text-white cursor-pointer items-center mb-4">
-                                                <input 
-                                                    type="checkbox" 
-                                                    className="ml-2 accent-[#e72a4f] scale-125" 
-                                                />
-                                                <p class="font-montserrat font-semibold text-[0.75rem] ml-3 hover:translate-x-2 transition-transform duration-300 transform">SECOND SEMESTER</p>
-                                            </li>
+                                            {Semesters.map((sem) => (
 
+                                            <li class="flex w-full text-white cursor-pointer items-center mb-4">
+                                                <input 
+                                                    type="checkbox" 
+                                                    className="ml-2 accent-[#e72a4f] scale-125" 
+                                                />
+                                                <p class=" font-montserrat font-semibold text-[0.75rem] ml-3 hover:translate-x-2 transition-transform duration-300 transform">{sem.title}</p>
+                                            </li>
+                                            ))}
                                         </ul>
                                     </>
                                 </li>                              
@@ -107,75 +77,17 @@ const SortArea = () => {
                                     <div class=" font-montserrat font-bold text-[1.1rem] ml-2 mb-5">SUBJECT</div>   
                                     <>
                                         <ul class="mt-1">
+                                           {sortSubjects.map((subject) => (
+                                            
                                             <li class="flex w-full text-white cursor-pointer items-center mb-4">
                                                 <input 
                                                     type="checkbox" 
                                                     className="ml-2 accent-[#e72a4f] scale-125"
-                                                    onChange={() => handleSubjectClick("Computer Science")} 
+                                                    // onChange={() => handleSubjectClick("Statistics")}  
                                                 />
-                                                <p class=" font-montserrat font-semibold text-[0.75rem] ml-3 hover:translate-x-2 transition-transform duration-300 transform">COMPUTER SCIENCE</p>
+                                                <p class=" font-montserrat font-semibold text-[0.75rem] ml-3 hover:translate-x-2 transition-transform duration-300 transform">{subject.title}</p>
                                             </li>
-                                            <li class="flex w-full text-white cursor-pointer items-center mb-4">
-                                                <input 
-                                                    type="checkbox" 
-                                                    className="ml-2 accent-[#e72a4f] scale-125"
-                                                    onChange={() => handleSubjectClick("Computer Studies")} 
-                                                />
-                                                <p class="font-montserrat font-semibold text-[0.75rem] ml-3 hover:translate-x-2 transition-transform duration-300 transform">COMPUTER STUDIES</p>
-                                            </li>
-                                            <li class="flex w-full text-white cursor-pointer items-center mb-4">
-                                                <input 
-                                                    type="checkbox" 
-                                                    className="ml-2 accent-[#e72a4f] scale-125" 
-                                                    onChange={() => handleSubjectClick("Statistics")}  
-                                                />
-                                                <p class=" font-montserrat font-semibold text-[0.75rem] ml-3 hover:translate-x-2 transition-transform duration-300 transform">STATISTICS</p>
-                                            </li>
-                                            <li class="flex w-full text-white cursor-pointer items-center mb-4">
-                                                <input 
-                                                    type="checkbox" 
-                                                    className="ml-2 accent-[#e72a4f] scale-125"
-                                                    onChange={() => handleSubjectClick("Pure Maths")}  
-                                                />
-                                                <p class="font-montserrat font-semibold text-[0.75rem] ml-3 hover:translate-x-2 transition-transform duration-300 transform">PURE MATHS</p>
-                                            </li>
-                                            <li class="flex w-full text-white cursor-pointer items-center mb-4">
-                                                <input 
-                                                    type="checkbox" 
-                                                    className="ml-2 accent-[#e72a4f] scale-125" 
-                                                />
-                                                <p class=" font-montserrat font-semibold text-[0.75rem] ml-3 hover:translate-x-2 transition-transform duration-300 transform">APPLIED MATHS</p>
-                                            </li>
-                                            <li class="flex w-full text-white cursor-pointer items-center mb-4">
-                                                <input 
-                                                    type="checkbox" 
-                                                    className="ml-2 accent-[#e72a4f] scale-125" 
-                                                />
-                                                <p class="font-montserrat font-semibold text-[0.75rem] ml-3 hover:translate-x-2 transition-transform duration-300 transform">PHYSICS</p>
-                                            </li>
-                                            <li class="flex w-full text-white cursor-pointer items-center mb-4">
-                                                <input 
-                                                    type="checkbox" 
-                                                    className="ml-2 accent-[#e72a4f] scale-125"
-                                                    onClick={() => handleSubjectClick("Physics")}  
-                                                />
-                                                <p class=" font-montserrat font-semibold text-[0.75rem] ml-3 hover:translate-x-2 transition-transform duration-300 transform">CHEMISTRY</p>
-                                            </li>
-                                            <li class="flex w-full text-white cursor-pointer items-center mb-4">
-                                                <input 
-                                                    type="checkbox" 
-                                                    className="ml-2 accent-[#e72a4f] scale-125" 
-                                                />
-                                                <p class="font-montserrat font-semibold text-[0.75rem] ml-3 hover:translate-x-2 transition-transform duration-300 transform">STUDY MUSIC</p>
-                                            </li>
-                                            <li class="flex w-full text-white cursor-pointer items-center mb-4">
-                                                <input 
-                                                    type="checkbox" 
-                                                    className="ml-2 accent-[#e72a4f] scale-125" 
-                                                />
-                                                <p class="font-montserrat font-semibold text-[0.75rem] ml-3 hover:translate-x-2 transition-transform duration-300 transform">OTHERS</p>
-                                            </li>
-
+                                           ))}
                                         </ul>
                                     </>
                                 </li>                                                           
@@ -209,91 +121,74 @@ const SortArea = () => {
                         </button>
 
                         <div class="px-8">
-                            <div class="h-16 w-full flex items-center">
-
+                            <div className='flex justify-center items-center '>
+                                <img src={kuppilogo} alt="site-logo" className='w-20 h-20 logo object-contain mt-12 ' />
                             </div>
+                            <div class="relative mt-5" data-te-input-wrapper-init>
+                                <input
+                                    type="search"
+                                    class="peer block min-h-[auto] w-full rounded border-0  bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-white data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none  [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+                                    id="exampleSearch2"
+                                    placeholder="Type query" />
+                                <label
+                                    for="exampleSearch2"
+                                    class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-white transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-white peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none  "
+                                    >Search</label
+                                >
+                            </div>                           
                             <ul class="mt-12">
 
                                 <li class=" w-full justify-between text-white cursor-pointer items-center mb-7">
                                     <div class=" font-montserrat font-bold text-[1rem] ml-2 mb-5">YEAR</div>   
                                     <>
                                         <ul class="mt-1">
+                                            {YearLinks.map((year) => (
+
                                             <li class="flex w-full text-white cursor-pointer items-center mb-4">
-                                                <input type="checkbox" className="ml-2" />
-                                                <p class=" font-montserrat font-semibold text-[0.7rem] ml-3">FIRST YEAR</p>
+                                                <input 
+                                                    type="checkbox" 
+                                                    className="ml-2 accent-[#e72a4f] scale-125" 
+                                                />
+                                                <p class=" font-montserrat font-semibold text-[0.7rem] ml-3">{year.yearName}</p>
                                             </li>
-                                            <li class="flex w-full text-white cursor-pointer items-center mb-4">
-                                                <input type="checkbox" className="ml-2" />
-                                                <p class="font-montserrat font-semibold text-[0.7rem] ml-3">SECOND YEAR</p>
-                                            </li>
-                                            <li class="flex w-full text-white cursor-pointer items-center mb-4">
-                                                <input type="checkbox" className="ml-2" />
-                                                <p class=" font-montserrat font-semibold text-[0.7rem] ml-3">THIRD YEAR</p>
-                                            </li>
-                                            <li class="flex w-full text-white cursor-pointer items-center mb-4">
-                                                <input type="checkbox" className="ml-2" />
-                                                <p class=" font-montserrat font-semibold text-[0.7rem] ml-3">FOURTH YEAR</p>
-                                            </li>
+                                            ))}
                                         </ul>
                                     </>
                                 </li>                              
                                 <li class=" w-full justify-between text-white cursor-pointer items-center mb-7">
                                     <div class=" font-montserrat font-bold text-[1rem] ml-2 mb-5">SEMESTER</div>   
                                     <>
-                                        <ul class="mt-1">
-                                            <li class="flex w-full text-white cursor-pointer items-center mb-4">
-                                                <input type="checkbox" className="ml-2" />
-                                                <p class=" font-montserrat font-semibold text-[0.7rem] ml-3">FIRST SEMESTER</p>
-                                            </li>
-                                            <li class="flex w-full text-white cursor-pointer items-center mb-4">
-                                                <input type="checkbox" className="ml-2" />
-                                                <p class="font-montserrat font-semibold text-[0.7rem] ml-3">SECOND SEMESTER</p>
-                                            </li>
+                                    <ul class="mt-1">
+                                            {Semesters.map((sem) => (
 
+                                            <li class="flex w-full text-white cursor-pointer items-center mb-4">
+                                                <input 
+                                                    type="checkbox" 
+                                                    className="ml-2 accent-[#e72a4f] scale-125" 
+                                                />
+                                                <p class=" font-montserrat font-semibold text-[0.75rem] ml-3 hover:translate-x-2 transition-transform duration-300 transform">{sem.title}</p>
+                                            </li>
+                                            ))}
                                         </ul>
                                     </>
                                 </li>                              
                                 <li class=" w-full justify-between text-white cursor-pointer items-center mb-7">
                                     <div class=" font-montserrat font-bold text-[1rem] ml-2 mb-5">SUBJECT</div>   
                                     <>
-                                        <ul class="mt-1">
+                                    <ul class="mt-1">
+                                           {sortSubjects.map((subject) => (
+                                            
                                             <li class="flex w-full text-white cursor-pointer items-center mb-4">
-                                                <input type="checkbox" className="ml-2" />
-                                                <p class=" font-montserrat font-semibold text-[0.7rem] ml-3">COMPUTER SCIENCE</p>
+                                                <label htmlFor="" class="font-montserrat font-semibold text-[0.75rem] ml-3 hover:translate-x-2 transition-transform duration-300 transform">
+                                                    <input
+                                                        type="checkbox"
+                                                        className="ml-2 accent-[#e72a4f] scale-125"
+                                                        // onChange={() => handleSubjectClick("Statistics")}
+                                                    />
+                                                    {subject.title}
+                                                </label>
                                             </li>
-                                            <li class="flex w-full text-white cursor-pointer items-center mb-4">
-                                                <input type="checkbox" className="ml-2" />
-                                                <p class="font-montserrat font-semibold text-[0.7rem] ml-3">COMPUTER STUDIES</p>
-                                            </li>
-                                            <li class="flex w-full text-white cursor-pointer items-center mb-4">
-                                                <input type="checkbox" className="ml-2" />
-                                                <p class=" font-montserrat font-semibold text-[0.7rem] ml-3">STATISTICS</p>
-                                            </li>
-                                            <li class="flex w-full text-white cursor-pointer items-center mb-4">
-                                                <input type="checkbox" className="ml-2" />
-                                                <p class="font-montserrat font-semibold text-[0.7rem] ml-3">PURE MATHEMATICS</p>
-                                            </li>
-                                            <li class="flex w-full text-white cursor-pointer items-center mb-4">
-                                                <input type="checkbox" className="ml-2" />
-                                                <p class=" font-montserrat font-semibold text-[0.7rem] ml-3">APPLIED MATHEMATICS</p>
-                                            </li>
-                                            <li class="flex w-full text-white cursor-pointer items-center mb-4">
-                                                <input type="checkbox" className="ml-2" />
-                                                <p class="font-montserrat font-semibold text-[0.7rem] ml-3">PHYSICS</p>
-                                            </li>
-                                            <li class="flex w-full text-white cursor-pointer items-center mb-4">
-                                                <input type="checkbox" className="ml-2" />
-                                                <p class=" font-montserrat font-semibold text-[0.7rem] ml-3">CHEMISTRY</p>
-                                            </li>
-                                            <li class="flex w-full text-white cursor-pointer items-center mb-4">
-                                                <input type="checkbox" className="ml-2" />
-                                                <p class="font-montserrat font-semibold text-[0.7rem] ml-3">STUDY MUSIC</p>
-                                            </li>
-                                            <li class="flex w-full text-white cursor-pointer items-center mb-4">
-                                                <input type="checkbox" className="ml-2" />
-                                                <p class="font-montserrat font-semibold text-[0.7rem] ml-3">OTHERS</p>
-                                            </li>
-
+                                           ))}
                                         </ul>
                                     </>
                                 </li>                                                           
