@@ -12,16 +12,27 @@ import { useNavigate } from "react-router-dom";
 const SortArea = () => {
   const [selectSubject, setSelectSubject] = useState([])
   const [selectSem, setSelectSem] = useState([])
+  const [selectYear, setSelectYear] = useState([])
   const navigate = useNavigate();
 
+
+    function handleYear(event, year) {
+        const isChecked = event.target.checked;
+        if (isChecked) {
+          setSelectYear([...selectYear, year]);
+          navigate(`/videos?year=${[year]}&semester=${[]}&search=${[]}`);
+      } else {
+          navigate(`/videos?year=${[]}&semester=${[]}&search=${[]}`);
+        }
+    }
 
     function handleSemester(event, sem) {
         const isChecked = event.target.checked;
         if (isChecked) {
           setSelectSem([...selectSem, sem]);
-        navigate(`/videos?semester=${[sem]}&search=${[]}`);
+          navigate(`/videos?year=${[]}&semester=${[sem]}&search=${[]}`);
       } else {
-          navigate(`/videos?semester=${[]}&search=${[]}`);
+          navigate(`/videos?year=${[]}&semester=${[]}&search=${[]}`);
         }
     }
 
@@ -29,9 +40,9 @@ const SortArea = () => {
         const isChecked = event.target.checked;
         if (isChecked) {
         setSelectSubject([...selectSubject, subject]);
-        navigate(`/videos?semester=${[]}&search=${[subject]}`);
+        navigate(`/videos?year=${[]}&semester=${[]}&search=${[subject]}`);
       } else {
-          navigate(`/videos?semester=${[]}&search=${[]}`);
+          navigate(`/videos?year=${[]}&semester=${[]}&search=${[]}`);
         }
     }
 
@@ -53,7 +64,9 @@ const SortArea = () => {
                       <li class="flex w-full text-white cursor-pointer items-center mb-4">
                         <input
                           type="checkbox"
+                          value={year.path}
                           className="ml-2 accent-[#e72a4f] scale-125"
+                          onClick={(e) => handleYear(e, year.path)}
                         />
                         <p class=" font-montserrat font-semibold text-[0.75rem] ml-3">
                           {year.yearName}
