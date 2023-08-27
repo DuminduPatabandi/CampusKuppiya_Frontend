@@ -1,13 +1,10 @@
 import { useState } from 'react'
-import { useLocation } from 'react-router-dom';
-import { useLoaderData, useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom';
+import { sortSubjects } from '../constants';
 
-
-
-const Semester1 = (props) => {
+const Semester1 = ({year}) => {
 
   const [input, setInput] = useState("")
-  const subjects = useLoaderData()
   const navigate = useNavigate()
 
 
@@ -21,13 +18,6 @@ const Semester1 = (props) => {
   };
 
 
-
-  // const handleSubjectClick = (inputValue) => {
-  //   setInput(inputValue);
-  //   navigate(`/docs?semester=First Semester&search=${inputValue}`);
-  // };
-
-
   const location = useLocation();
   console.log(location.pathname); // logs the current path
   // rest of the component code
@@ -37,16 +27,16 @@ const Semester1 = (props) => {
     <section id='work'>
       <div className="bg-white">
         <div className="mx-auto max-w-2xl py-8 px-4 sm:py-16 sm:px-6 lg:max-w-7xl lg:px-8 ">
-          <h3 className='font-montserrat font-bold text-[1.2rem] text-[#002ead]  pb-[5rem]'> YEAR ? : Semester 1</h3>
+          <h3 className='font-montserrat font-bold text-[1.2rem] text-[#002ead]  pb-[5rem]'> {year} : Semester 1</h3>
       <div className="grid grid-cols-1 text-center gap-y-10  gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
-      {subjects.map((product) => (
+      {sortSubjects.map((product) => (
               <span to ="/docs" 
               key={product.id}
               onClick={() => handleSubjectClick(product.input)}
               className="group text-[#0a0a23] bg-[#f9f9f9] drop-shadow-lg hover:bg-slate-100 duration-700 py-20 px-4  mx-4  rounded-lg">
                 <div className={`aspect-w-1 font-montserrat text-[2rem] font-bold aspect-h-1 w-full overflow-hidden  xl:aspect-w-7 xl:aspect-h-8`}>
                   <p  className="h-full w-full object-cover object-center ">
-                  {product.title}
+                  {product.input}
                   </p>
                 </div>
               </span>
@@ -59,11 +49,5 @@ const Semester1 = (props) => {
   )
 }
 
-//Loader function
-export const subjectsLoader = async () => {
-  const res = await fetch('http://localhost:4000/subjects')
-
-  return res.json()
-}
 
 export default Semester1

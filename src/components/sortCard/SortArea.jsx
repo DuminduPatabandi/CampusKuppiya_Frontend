@@ -3,7 +3,7 @@ import { Document } from "../../components";
 import { kuppilogo } from "../../assets";
 import { sortSubjects, YearLinks, Semesters } from "../../constants";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 
@@ -11,28 +11,29 @@ import { useNavigate } from "react-router-dom";
 
 const SortArea = () => {
   const [selectSubject, setSelectSubject] = useState([])
-  const [subjectClick, setSubjectClick] = useState('')
+  const [selectSem, setSelectSem] = useState([])
   const navigate = useNavigate();
 
-        //   const handleCheckboxChange = (event) => {
-        //     setIsChecked(event.target.checked);
 
-        //     useEffect(() => {
-        //       if (isChecked) {
-        //         navigate(`/videos?semester=First Semester&search=${subjectClick}`)
-        //       }
-        //     }, [isChecked])
-        //   };
-
-        function handleClick(event, subject) {
-            const isChecked = event.target.checked
-            if (isChecked) {
-                setSelectSubject([...selectSubject, subject])
-                navigate(`/videos?semester=First Semester&search=${[subject]}`)
-            } else {
-
-            }
+    function handleSemester(event, sem) {
+        const isChecked = event.target.checked;
+        if (isChecked) {
+          setSelectSem([...selectSem, sem]);
+        navigate(`/videos?semester=${[sem]}&search=${[]}`);
+      } else {
+          navigate(`/videos?semester=${[]}&search=${[]}`);
         }
+    }
+
+    function handleClick(event, subject) {
+        const isChecked = event.target.checked;
+        if (isChecked) {
+        setSelectSubject([...selectSubject, subject]);
+        navigate(`/videos?semester=${[]}&search=${[subject]}`);
+      } else {
+          navigate(`/videos?semester=${[]}&search=${[]}`);
+        }
+    }
 
   return (
     <div class="w-full h-full mt-10 -mb-3">
@@ -71,7 +72,9 @@ const SortArea = () => {
                       <li class="flex w-full text-white cursor-pointer items-center mb-4">
                         <input
                           type="checkbox"
+                          value={sem.path}
                           className="ml-2 accent-[#e72a4f] scale-125"
+                          onClick={(e) => handleSemester(e, sem.path)}
                         />
                         <p class=" font-montserrat font-semibold text-[0.75rem] ml-3 hover:translate-x-2 transition-transform duration-300 transform">
                           {sem.title}
@@ -208,44 +211,43 @@ const SortArea = () => {
                     SEMESTER
                   </div>
 
-                    <ul class="mt-1">
-                      {Semesters.map((sem) => (
-                        <li class="flex w-full text-white cursor-pointer items-center mb-4">
-                          <input
-                            type="checkbox"
-                            className="ml-2 accent-[#e72a4f] scale-125"
-                          />
-                          <p class=" font-montserrat font-semibold text-[0.75rem] ml-3 hover:translate-x-2 transition-transform duration-300 transform">
-                            {sem.title}
-                          </p>
-                        </li>
-                      ))}
-                    </ul>
-
+                  <ul class="mt-1">
+                    {Semesters.map((sem) => (
+                      <li class="flex w-full text-white cursor-pointer items-center mb-4">
+                        <input
+                          type="checkbox"
+                          className="ml-2 accent-[#e72a4f] scale-125"
+                        />
+                        <p class=" font-montserrat font-semibold text-[0.75rem] ml-3 hover:translate-x-2 transition-transform duration-300 transform">
+                          {sem.title}
+                        </p>
+                      </li>
+                    ))}
+                  </ul>
                 </li>
                 <li class=" w-full justify-between text-white cursor-pointer items-center mb-7">
                   <div class=" font-montserrat font-bold text-[1rem] ml-2 mb-5">
                     SUBJECT
                   </div>
-                  
-                    <ul class="mt-1">
-                      {sortSubjects.map((subject) => (
-                        <li class="flex w-full text-white cursor-pointer items-center mb-4">
-                          <label
-                            htmlFor=""
-                            class="font-montserrat font-semibold text-[0.75rem] ml-3 hover:translate-x-2 transition-transform duration-300 transform"
-                          >
-                            <input
-                              type="checkbox"
-                              className="ml-2 accent-[#e72a4f] scale-125"
-                              // onChange={() => handleSubjectClick("Statistics")}
-                            />
-                            {subject.title}
-                          </label>
-                        </li>
-                      ))}
-                    </ul>
 
+                  <ul class="mt-1">
+                    {sortSubjects.map((subject) => (
+                      <li class="flex w-full text-white cursor-pointer items-center mb-4">
+                        <label
+                          htmlFor=""
+                          class="font-montserrat font-semibold text-[0.75rem] ml-3 hover:translate-x-2 transition-transform duration-300 transform"
+                        >
+                          <input
+                            type="checkbox"
+                            value={subject.input}
+                            className="ml-2 accent-[#e72a4f] scale-125"
+                            onClick={(e) => handleClick(e, subject.input)}
+                          />
+                          {subject.title}
+                        </label>
+                      </li>
+                    ))}
+                  </ul>
                 </li>
               </ul>
             </div>
@@ -256,7 +258,6 @@ const SortArea = () => {
               <Document />
             </div>
           </div>
-
         </div>
       </dh-component>
     </div>

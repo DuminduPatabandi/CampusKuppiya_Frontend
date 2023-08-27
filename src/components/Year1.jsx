@@ -4,7 +4,7 @@ import { SemNav } from "../components"
 const Year1 = () => {
   return (
     <div className="text-center">
-      <SemNav/>
+      <SemNav year='First Year'/>
     </div>
   )
 }

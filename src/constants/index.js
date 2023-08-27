@@ -31,12 +31,12 @@ export const Semesters = [
   {
     id: "y1s1",
     title: "FIRST SEMESTER",
-    path: "sem1"
+    path: "First Semester"
   },
   {
     id: "y1s2",
     title: "SECOND SEMESTER",
-    path: "sem2"
+    path: "Second Semester"
   },
 ] 
 export const Y1Semesters = [

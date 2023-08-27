@@ -7,7 +7,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "start": "react-scripts start",
-    "dev": "concurrently \"json-server -p 4000 -w ./data/db.json\" \"vite\"",
+    "dev": "vite",
     "test": "react-scripts test"
   },
   "dependencies": {
